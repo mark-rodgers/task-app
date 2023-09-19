@@ -34,10 +34,9 @@ export default function UserMenu() {
       </Popover>
       <div
         onClick={togglePopover}
-        className="flex cursor-pointer items-center bg-stone-200 p-2 hover:bg-stone-300"
+        className="flex cursor-pointer select-none items-center bg-stone-200 p-2 hover:bg-stone-300"
       >
         <Image
-          // src="https://via.placeholder.com/80x80/fbbf24/b45309?text=MR"
           src="https://avatars.githubusercontent.com/u/2798202"
           width={40}
           height={40}
