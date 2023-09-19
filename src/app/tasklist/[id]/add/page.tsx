@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getTaskList, createTask } from "@/api";
+import { getTaskListById, createTask } from "@/api";
 import PageTitle from "@/app/components/PageTitle";
 import TextBox from "@/app/components/TextBox";
 import Button from "@/app/components/Button";
@@ -34,7 +34,7 @@ export default async function page({ params }: { params: { id: string } }) {
     return <>Invalid taskListId</>;
   }
 
-  const taskList = await getTaskList(+params.id);
+  const taskList = await getTaskListById(+params.id);
   if (!taskList) return <>Task list not found</>;
 
   return (
