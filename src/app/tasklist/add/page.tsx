@@ -4,7 +4,7 @@ import PageTitle from "@/app/components/PageTitle";
 import TextBox from "@/app/components/TextBox";
 import Button from "@/app/components/Button";
 
-export async function handleFormSubmit(data: FormData) {
+async function handleFormSubmit(data: FormData) {
   "use server";
 
   const title = data.get("title");

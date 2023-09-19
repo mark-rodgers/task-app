@@ -9,7 +9,7 @@ function validateParams(params: { id: string }): boolean {
   return false;
 }
 
-export async function handleFormSubmit(data: FormData) {
+async function handleFormSubmit(data: FormData) {
   "use server";
 
   const title = data.get("title");

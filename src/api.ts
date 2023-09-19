@@ -11,7 +11,8 @@ export function getTaskLists() {
 export function getTaskListById(
   taskListId: number,
   includeTasks: boolean = false,
-): Promise<TaskList | TaskListWithTasks | null> {
+): Promise<any | null> {
+  // TODO: fix any so it works with TaskListWithTasks
   return prisma.taskList.findUnique({
     where: { id: taskListId },
     include: { tasks: includeTasks },
