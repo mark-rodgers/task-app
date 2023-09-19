@@ -18,7 +18,9 @@ export default async function page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <PageTitle title={taskList.title} />
+      <PageTitle title={taskList.title}>
+        <Button href={`/tasklist/${params.id}/add`}>New Task</Button>
+      </PageTitle>
       {!taskList.tasks || taskList.tasks.length === 0 ? (
         <div className="flex h-full items-center justify-center text-center">
           <div className="flex flex-col gap-8">

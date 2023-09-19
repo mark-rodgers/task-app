@@ -1,4 +1,5 @@
 import { prisma } from "@/db";
+import { redirect } from "next/navigation";
 
 export function getTaskList(taskListId: number, includeTasks: boolean = false) {
   return prisma.taskList.findUnique({
@@ -10,6 +11,11 @@ export function getTaskList(taskListId: number, includeTasks: boolean = false) {
 export async function toggleTaskComplete(id: number, complete: boolean) {
   "use server";
   await prisma.task.update({ where: { id }, data: { complete } });
+}
+
+export async function createTask(task: { title: string; taskListId: number }) {
+  "use server";
+  await prisma.task.create({ data: task });
 }
 
 // export function getTasksByTaskListId(taskListId: number) {
