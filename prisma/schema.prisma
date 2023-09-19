@@ -10,10 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Todo {
+model Task {
+  id         Int      @id @default(autoincrement())
+  title      String
+  complete   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  taskList   TaskList @relation(fields: [taskListId], references: [id])
+  taskListId Int
+}
+
+model TaskList {
   id        Int      @id @default(autoincrement())
   title     String
-  complete  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  tasks     Task[]
 }

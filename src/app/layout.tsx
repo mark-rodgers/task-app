@@ -1,14 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import TaskListNavLink from "./components/TaskListNavLink";
 import UserMenu from "./components/UserMenu";
-import AddIcon from "./components/icons/AddIcon";
+import Button from "./components/Button";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Todo",
-  description: "Basic Todo App",
+  title: "Task App",
+  description: "Task Management Application",
 };
 
 export default function RootLayout({
@@ -21,24 +22,15 @@ export default function RootLayout({
       <body className={`${inter.className} flex min-h-full`}>
         <header className="flex w-full max-w-xs flex-col justify-between bg-stone-100">
           <nav className="p-4">
-            <ul className="text-stone-500">
-              <li className="font-bold">Tasks</li>
-              <li>
-                <ul>
-                  <li>Task List 1</li>
-                </ul>
-                <ul>
-                  <li>Task List 2</li>
-                </ul>
-                <ul>
-                  <li>
-                    <div className="flex items-center">
-                      <AddIcon className="mr-2 h-6 w-6" /> New Task List
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <div className="text-stone-500">
+              <div className="font-bold">Tasks</div>
+              <TaskListNavLink id={1} title="Task List 1" />
+              <TaskListNavLink id={2} title="Task List 2" />
+              <TaskListNavLink id={3} title="Task List 3" />
+              <div className="mt-4 flex items-center justify-center">
+                <Button href="/tasklist/add">New Task List</Button>
+              </div>
+            </div>
           </nav>
           <UserMenu />
         </header>

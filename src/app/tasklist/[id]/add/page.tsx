@@ -1,17 +1,17 @@
-import { prisma } from "@/db";
 import { redirect } from "next/navigation";
-import PageTitle from "../components/PageTitle";
-import TextBox from "../components/TextBox";
-import Button from "../components/Button";
+import { prisma } from "@/db";
+import PageTitle from "@/app/components/PageTitle";
+import TextBox from "@/app/components/TextBox";
+import Button from "@/app/components/Button";
 
-async function createTodo(data: FormData) {
+async function createTask(data: FormData) {
   "use server";
 
   const title = data.get("title")?.valueOf();
   if (typeof title !== "string" || title.length === 0)
     throw new Error("Invalid Title");
 
-  await prisma.todo.create({ data: { title } });
+  await prisma.task.create({ data: { title } });
   redirect("/");
 }
 
@@ -19,7 +19,7 @@ export default function page() {
   return (
     <>
       <PageTitle title="New Task" />
-      <form action={createTodo} className="flex flex-col gap-2">
+      <form action={createTask} className="flex flex-col gap-2">
         <TextBox name="title" placeholder="New Task" />
         <div className="flex justify-end gap-1">
           <Button

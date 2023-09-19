@@ -1,8 +1,8 @@
-// import { prisma } from "@/db";
 import { redirect } from "next/navigation";
-import PageTitle from "../../components/PageTitle";
-import TextBox from "../../components/TextBox";
-import Button from "../../components/Button";
+// import { prisma } from "@/db";
+import PageTitle from "@/app/components/PageTitle";
+import TextBox from "@/app/components/TextBox";
+import Button from "@/app/components/Button";
 
 async function createTaskList(data: FormData) {
   "use server";
@@ -11,7 +11,7 @@ async function createTaskList(data: FormData) {
   // if (typeof title !== "string" || title.length === 0)
   //   throw new Error("Invalid Title");
 
-  // await prisma.todo.create({ data: { title } });
+  // await prisma.tasklist.create({ data: { title } });
   redirect("/");
 }
 
