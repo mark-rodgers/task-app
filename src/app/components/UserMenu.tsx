@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Popover from "./Popover";
 import Link from "next/link";
+import Popover from "./Popover";
 
 export default function UserMenu() {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -18,10 +18,16 @@ export default function UserMenu() {
         <div className="absolute right-0 top-0 mb-2 mr-2 w-48 translate-y-[-110%] rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             <Link
-              href="/account"
+              href="/settings"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              Manage Account
+              Settings
+            </Link>
+            <Link
+              href="/about"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              About
             </Link>
             <Link
               href="/logout"

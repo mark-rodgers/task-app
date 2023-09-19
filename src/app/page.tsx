@@ -1,4 +1,5 @@
 import { prisma } from "@/db";
+import PageTitle from "./components/PageTitle";
 import Button from "./components/Button";
 import { TodoItem } from "./components/TodoItem";
 
@@ -17,10 +18,9 @@ export default async function Home() {
 
   return (
     <>
-      <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Todos</h1>
-        <Button href="/new">New</Button>
-      </div>
+      <PageTitle title="Tasks">
+        <Button href="/new">New Task</Button>
+      </PageTitle>
       <main>
         <ul>
           {todos.map((todo) => (

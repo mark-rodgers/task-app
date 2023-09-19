@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 type TodoItemProps = {
   id: number;
   title: string;
@@ -9,8 +11,8 @@ type TodoItemProps = {
 
 export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
   return (
-    <li className="border-b border-stone-300 last:border-0">
-      <div className="flex items-center px-3 hover:bg-stone-100">
+    <li className="group flex items-center border-b border-stone-300 last:border-0 hover:bg-stone-100">
+      <div className="flex w-full items-center px-3 transition-transform group-hover:translate-x-1">
         <input
           id={`${id}`}
           type="checkbox"
@@ -24,6 +26,17 @@ export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
         >
           {title}
         </label>
+      </div>
+      <div className="hidden group-hover:flex">
+        {Array(3)
+          .fill(0)
+          .map((_, __) => (
+            <Link
+              key={__}
+              href="/"
+              className="mx-1 h-8 w-8 bg-stone-200 transition-colors hover:bg-amber-300"
+            ></Link>
+          ))}
       </div>
     </li>
   );

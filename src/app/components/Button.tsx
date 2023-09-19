@@ -1,5 +1,4 @@
 import Link from "next/link";
-import classNames from "classnames";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -9,12 +8,12 @@ type ButtonProps = {
 };
 
 export default function Button({ children, href, className }: ButtonProps) {
-  const classes = classNames("base-button", className);
+  if (className === undefined) className = "base-button";
 
-  if (!href) return <button className={classes}>{children}</button>;
+  if (!href) return <button className={className}>{children}</button>;
   else
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={className}>
         {children}
       </Link>
     );

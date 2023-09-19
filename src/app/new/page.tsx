@@ -1,7 +1,8 @@
-import TextBox from "../components/TextBox";
-import Button from "../components/Button";
 import { prisma } from "@/db";
 import { redirect } from "next/navigation";
+import PageTitle from "../components/PageTitle";
+import TextBox from "../components/TextBox";
+import Button from "../components/Button";
 
 async function createTodo(data: FormData) {
   "use server";
@@ -17,22 +18,13 @@ async function createTodo(data: FormData) {
 export default function page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl">New Todo</h1>
-      </div>
+      <PageTitle title="New Task" />
       <form action={createTodo} className="flex flex-col gap-2">
         <TextBox name="title" placeholder="New Task" />
         <div className="flex justify-end gap-1">
           <Button
             href="/"
-            className={`border-transparent bg-transparent text-stone-700 underline-offset-4 ${[
-              "hover",
-              "focus",
-            ]
-              .map((state) => {
-                return `${state}:border-transparent ${state}:bg-transparent ${state}:underline`;
-              })
-              .join(" ")}`}
+            className="rounded-full px-12 py-2 font-bold text-stone-700 underline-offset-4 outline-none hover:underline focus:underline"
           >
             Cancel
           </Button>
