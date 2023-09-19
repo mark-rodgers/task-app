@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import UserMenu from "./components/UserMenu";
+import AddIcon from "./components/icons/AddIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,11 @@ export default function RootLayout({
                   <li>Task List 2</li>
                 </ul>
                 <ul>
-                  <li>+ New Task List</li>
+                  <li>
+                    <div className="flex items-center">
+                      <AddIcon className="mr-2 h-6 w-6" /> New Task List
+                    </div>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -38,7 +43,7 @@ export default function RootLayout({
           <UserMenu />
         </header>
         <main className="flex-1">
-          <div className="container mx-auto min-h-full p-4">{children}</div>
+          <div className="container mx-auto h-full p-4">{children}</div>
         </main>
       </body>
     </html>

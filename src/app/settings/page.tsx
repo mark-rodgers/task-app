@@ -4,7 +4,6 @@ export default function page() {
   return (
     <>
       <PageTitle title="Settings" />
-      <div>TODO</div>
     </>
   );
 }

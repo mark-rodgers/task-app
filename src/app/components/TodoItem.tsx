@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import CalendarIcon from "../components/icons/CalendarIcon";
+import BellIcon from "../components/icons/BellIcon";
 
 type TodoItemProps = {
   id: number;
@@ -28,15 +31,12 @@ export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
         </label>
       </div>
       <div className="hidden group-hover:flex">
-        {Array(3)
-          .fill(0)
-          .map((_, __) => (
-            <Link
-              key={__}
-              href="/"
-              className="mx-1 h-8 w-8 bg-stone-200 transition-colors hover:bg-amber-300"
-            ></Link>
-          ))}
+        <Link href="/" className="mx-2">
+          <CalendarIcon className="transition-colors hover:text-amber-500" />
+        </Link>
+        <Link href="/" className="mx-2">
+          <BellIcon className="transition-colors hover:text-amber-500" />
+        </Link>
       </div>
     </li>
   );

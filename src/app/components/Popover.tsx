@@ -3,6 +3,7 @@ import { Transition } from "@headlessui/react";
 type PopoverProps = {
   children: React.ReactNode;
   isPopoverOpen: boolean;
+  ref?: React.Ref<HTMLDivElement>;
 };
 
 export default function Popover({ children, isPopoverOpen }: PopoverProps) {
