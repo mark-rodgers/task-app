@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import TaskListNav from "@/app/components/TaskListNav";
-import UserMenu from "@/app/components/UserMenu";
+import TaskListNav from "@/app/_components/TaskListNav";
+import UserMenu from "@/app/_components/UserMenu";
 import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });

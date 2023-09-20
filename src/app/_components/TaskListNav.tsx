@@ -1,6 +1,6 @@
 import { getTaskLists } from "@/api";
-import TaskListNavLink from "@/app/components/TaskListNavLink";
-import Button from "@/app/components/Button";
+import TaskListNavLink from "@/app/_components/TaskListNavLink";
+import Button from "@/app/_components/Button";
 
 export default async function TaskListNav() {
   const taskLists = await getTaskLists();

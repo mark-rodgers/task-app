@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getTaskListById, toggleTaskComplete } from "@/api";
-import PageTitle from "@/app/components/PageTitle";
-import TaskListTask from "@/app/components/TaskListTask";
-import Button from "@/app/components/Button";
+import PageTitle from "@/app/_components/PageTitle";
+import TaskListTask from "@/app/_components/TaskListTask";
+import Button from "@/app/_components/Button";
 import type { Task } from "@prisma/client";
 
 function validateParams(params: { taskListId: string }): boolean {

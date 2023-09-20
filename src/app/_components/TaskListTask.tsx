@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import CheckBox from "@/app/components/CheckBox";
-import CalendarIcon from "@/app/components/icons/CalendarIcon";
-import BellIcon from "@/app/components/icons/BellIcon";
-import FlagIcon from "@/app/components/icons/FlagIcon";
-import TagIcon from "@/app/components/icons/TagIcon";
-import ExpandIcon from "@/app/components/icons/ExpandIcon";
-import TrashIcon from "@/app/components/icons/TrashIcon";
+import CheckBox from "@/app/_components/CheckBox";
+import CalendarIcon from "@/app/_components/icons/CalendarIcon";
+import BellIcon from "@/app/_components/icons/BellIcon";
+import FlagIcon from "@/app/_components/icons/FlagIcon";
+import TagIcon from "@/app/_components/icons/TagIcon";
+import ExpandIcon from "@/app/_components/icons/ExpandIcon";
+import TrashIcon from "@/app/_components/icons/TrashIcon";
 
 type TaskListTaskProps = {
   id: number;

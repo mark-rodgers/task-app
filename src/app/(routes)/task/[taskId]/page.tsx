@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 import { getTaskById, updateTaskById, deleteTaskById } from "@/api";
-import PageTitle from "@/app/components/PageTitle";
-import Button from "@/app/components/Button";
+import PageTitle from "@/app/_components/PageTitle";
+import TextBox from "@/app/_components/TextBox";
+import CheckBox from "@/app/_components/CheckBox";
+import Button from "@/app/_components/Button";
 
 function validateParams(params: { taskId: string }): boolean {
   if (params.taskId.match(/^[0-9]+$/)) return true;
@@ -11,6 +13,12 @@ function validateParams(params: { taskId: string }): boolean {
 async function handleFormSubmit(data: FormData) {
   "use server";
 
+  const title = data.get("title");
+  if (typeof title !== "string" || title.length === 0)
+    throw new Error("Invalid title");
+
+  const complete = data.get("complete");
+
   const id = data.get("id");
   if (id === null || id === undefined) throw new Error("Invalid id");
 
@@ -18,7 +26,8 @@ async function handleFormSubmit(data: FormData) {
   if (taskListId === null || taskListId === undefined)
     throw new Error("Invalid taskListId");
 
-  await deleteTaskById(+id);
+  const task = { title: title, complete: complete === "on" ? true : false };
+  await updateTaskById(+id, task);
   redirect(`/tasklist/${taskListId}`);
 }
 
@@ -32,24 +41,35 @@ export default async function page({ params }: { params: { taskId: string } }) {
 
   return (
     <>
-      <PageTitle title={task.title} />
-      <p className="mb-4">Are you sure you want to delete this task?</p>
+      <PageTitle title="Update Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
+        <TextBox name="title" defaultValue={task.title} />
+        <div className="my-3 flex items-center">
+          <CheckBox
+            id="complete"
+            name="complete"
+            defaultChecked={task.complete}
+          />
+          <label htmlFor="complete" className="cursor-pointer pl-4">
+            Completed
+          </label>
+        </div>
         <input type="hidden" name="id" value={task.id} />
         <input type="hidden" name="taskListId" value={task.taskListId} />
         <div className="flex justify-end gap-1">
           <Button
-            href={`/tasklist/${task.taskListId}`}
+            href="/"
             className="border-transparent bg-transparent text-black underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
           </Button>
           <Button
-            type="submit"
+            href={`/task/${task.id}/delete`}
             className="border-red-500 bg-red-500 text-red-800 hover:border-red-400 hover:bg-red-400 focus:border-red-400 focus:bg-red-400"
           >
             Delete
           </Button>
+          <Button type="submit">Update</Button>
         </div>
       </form>
     </>

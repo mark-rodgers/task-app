@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { getTaskListById, createTask } from "@/api";
-import PageTitle from "@/app/components/PageTitle";
-import TextBox from "@/app/components/TextBox";
-import Button from "@/app/components/Button";
+import PageTitle from "@/app/_components/PageTitle";
+import TextBox from "@/app/_components/TextBox";
+import Button from "@/app/_components/Button";
 
 function validateParams(params: { taskListId: string }): boolean {
   if (params.taskListId.match(/^[0-9]+$/)) return true;
