@@ -1,7 +1,11 @@
 import { redirect } from "next/navigation";
-import { getTaskById, updateTaskById, deleteTaskById } from "@/api";
+import { getTaskById, updateTaskById, getTaskLists } from "@/api";
 import PageTitle from "@/app/_components/PageTitle";
 import TextBox from "@/app/_components/TextBox";
+import ListBox from "@/app/_components/ListBox";
+import ListBoxButton from "@/app/_components/ListBoxButton";
+import ListBoxOptions from "@/app/_components/ListBoxOptions";
+import ListBoxOption from "@/app/_components/ListBoxOption";
 import CheckBox from "@/app/_components/CheckBox";
 import Button from "@/app/_components/Button";
 
@@ -26,7 +30,12 @@ async function handleFormSubmit(data: FormData) {
   if (taskListId === null || taskListId === undefined)
     throw new Error("Invalid taskListId");
 
-  const task = { title: title, complete: complete === "on" ? true : false };
+  const task = {
+    title: title,
+    complete: complete === "on" ? true : false,
+    taskListId: +taskListId,
+  };
+  console.log(task);
   await updateTaskById(+id, task);
   redirect(`/tasklist/${taskListId}`);
 }
@@ -36,14 +45,35 @@ export default async function page({ params }: { params: { taskId: string } }) {
     return <>Invalid taskId</>;
   }
 
-  const task = await getTaskById(+params.taskId);
+  const task = await getTaskById(+params.taskId, true);
   if (!task) return <>Task not found</>;
+
+  const taskLists = await getTaskLists();
 
   return (
     <>
       <PageTitle title="Update Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
         <TextBox name="title" defaultValue={task.title} />
+        <ListBox
+          name="taskListId"
+          defaultId={task.taskListId}
+          defaultValue={task.taskList.title}
+        >
+          <ListBoxButton />
+          <ListBoxOptions>
+            {taskLists &&
+              taskLists.map((taskList) => (
+                <ListBoxOption
+                  key={taskList.id}
+                  id={taskList.id}
+                  value={taskList.title}
+                >
+                  {taskList.title}
+                </ListBoxOption>
+              ))}
+          </ListBoxOptions>
+        </ListBox>
         <div className="my-3 flex items-center">
           <CheckBox
             id="complete"
@@ -55,7 +85,6 @@ export default async function page({ params }: { params: { taskId: string } }) {
           </label>
         </div>
         <input type="hidden" name="id" value={task.id} />
-        <input type="hidden" name="taskListId" value={task.taskListId} />
         <div className="flex justify-end gap-1">
           <Button
             href="/"
