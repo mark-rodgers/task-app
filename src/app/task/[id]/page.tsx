@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getTaskById, updateTask } from "@/api";
+import { getTaskById, updateTaskById, deleteTaskById } from "@/api";
 import PageTitle from "@/app/components/PageTitle";
 import TextBox from "@/app/components/TextBox";
 import Button from "@/app/components/Button";
@@ -11,7 +11,6 @@ function validateParams(params: { id: string }): boolean {
 
 async function handleFormSubmit(data: FormData) {
   "use server";
-  console.log("TODO: UPDATE TASK");
 
   const title = data.get("title");
   if (typeof title !== "string" || title.length === 0)
@@ -24,12 +23,22 @@ async function handleFormSubmit(data: FormData) {
   if (taskListId === null || taskListId === undefined)
     throw new Error("Invalid taskListId");
 
-  console.log(`id: ${id}`);
-  console.log(`title: ${title}`);
-
   const task = { title };
+  await updateTaskById(+id, task);
+  redirect(`/tasklist/${taskListId}`);
+}
 
-  await updateTask(+id, task);
+async function handleDeleteButton(data: FormData) {
+  "use server";
+
+  const id = data.get("id");
+  if (id === null || id === undefined) throw new Error("Invalid id");
+
+  const taskListId = data.get("taskListId");
+  if (taskListId === null || taskListId === undefined)
+    throw new Error("Invalid taskListId");
+
+  await deleteTaskById(+id);
   redirect(`/tasklist/${taskListId}`);
 }
 
@@ -51,9 +60,15 @@ export default async function page({ params }: { params: { id: string } }) {
         <div className="flex justify-end gap-1">
           <Button
             href="/"
-            className="rounded-full px-12 py-2 font-bold text-stone-700 underline-offset-4 outline-none hover:underline focus:underline"
+            className="base-button border-transparent bg-transparent text-stone-700 underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
+          </Button>
+          <Button
+            className="base-button border-red-500 bg-red-500 text-red-800 hover:border-red-400 hover:bg-red-400 focus:border-red-400 focus:bg-red-400"
+            formAction={handleDeleteButton}
+          >
+            Delete
           </Button>
           <Button type="submit">Update</Button>
         </div>

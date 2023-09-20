@@ -5,12 +5,23 @@ type ButtonProps = {
   type?: string;
   href?: string;
   className?: string;
+  formAction?: (data: FormData) => void;
 };
 
-export default function Button({ children, href, className }: ButtonProps) {
+export default function Button({
+  children,
+  href,
+  className,
+  formAction,
+}: ButtonProps) {
   if (className === undefined) className = "base-button";
 
-  if (!href) return <button className={className}>{children}</button>;
+  if (!href)
+    return (
+      <button formAction={formAction} className={className}>
+        {children}
+      </button>
+    );
   else
     return (
       <Link href={href} className={className}>

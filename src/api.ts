@@ -46,7 +46,7 @@ export function getTaskById(
   });
 }
 
-export async function updateTask(
+export async function updateTaskById(
   id: number,
   task: {
     title: string;
@@ -58,6 +58,15 @@ export async function updateTask(
       id: id,
     },
     data: task,
+  });
+}
+
+export async function deleteTaskById(id: number): Promise<Task> {
+  "use server";
+  return await prisma.task.delete({
+    where: {
+      id: id,
+    },
   });
 }
 
