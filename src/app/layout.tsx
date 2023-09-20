@@ -1,8 +1,9 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import TaskListNav from "./components/TaskListNav";
 import UserMenu from "./components/UserMenu";
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,12 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} flex min-h-full`}>
         <header className="flex w-full max-w-xs flex-col justify-between bg-stone-100">
-          <TaskListNav />
+          <div>
+            <div className="mx-4 mt-4 font-bold text-stone-500">
+              <Link href="/">Dashboard</Link>
+            </div>
+            <TaskListNav />
+          </div>
           <UserMenu />
         </header>
         <main className="flex-1">

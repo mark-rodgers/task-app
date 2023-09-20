@@ -15,7 +15,11 @@ export default async function page({ params }: { params: { id: string } }) {
     return <>Invalid taskListId</>;
   }
 
-  const taskList = await getTaskListById(+params.id, true);
+  const taskList = await getTaskListById(+params.id, {
+    orderBy: {
+      id: "asc",
+    },
+  });
   if (!taskList) return <>Task list not found</>;
 
   return (
