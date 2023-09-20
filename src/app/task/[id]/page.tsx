@@ -28,20 +28,6 @@ async function handleFormSubmit(data: FormData) {
   redirect(`/tasklist/${taskListId}`);
 }
 
-async function handleDeleteButton(data: FormData) {
-  "use server";
-
-  const id = data.get("id");
-  if (id === null || id === undefined) throw new Error("Invalid id");
-
-  const taskListId = data.get("taskListId");
-  if (taskListId === null || taskListId === undefined)
-    throw new Error("Invalid taskListId");
-
-  await deleteTaskById(+id);
-  redirect(`/tasklist/${taskListId}`);
-}
-
 export default async function page({ params }: { params: { id: string } }) {
   if (validateParams(params) === false) {
     return <>Invalid taskId</>;
@@ -65,8 +51,8 @@ export default async function page({ params }: { params: { id: string } }) {
             Cancel
           </Button>
           <Button
+            href={`/task/${task.id}/delete`}
             className="base-button border-red-500 bg-red-500 text-red-800 hover:border-red-400 hover:bg-red-400 focus:border-red-400 focus:bg-red-400"
-            formAction={handleDeleteButton}
           >
             Delete
           </Button>

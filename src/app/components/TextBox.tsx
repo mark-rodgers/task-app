@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 type TextBoxProps = {
   name: string;
   placeholder?: string;
@@ -17,7 +19,10 @@ export default function TextBox({
       name={name}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      className={`rounded-full border-2 border-stone-300 bg-transparent px-4 py-2 font-bold outline-none transition-colors focus-within:border-amber-300 ${className}`}
+      className={twMerge(
+        "rounded-full border-2 border-stone-300 bg-transparent px-4 py-2 font-bold outline-none transition-colors focus-within:border-amber-300",
+        className,
+      )}
     />
   );
 }

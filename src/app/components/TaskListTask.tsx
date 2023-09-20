@@ -27,11 +27,11 @@ export default function TaskListTask({
       <div className="flex w-full items-center px-3 transition-transform group-hover/li:translate-x-1">
         <CheckBox
           id={id.toString()}
-          className="peer/checkbox"
+          className="peer"
           defaultChecked={complete}
           onChange={(e) => toggleTaskComplete(id, e.target.checked)}
         />
-        <label className="group/label ml-3 flex-1 cursor-pointer select-none items-center peer-checked/checkbox:text-slate-500 peer-checked/checkbox:line-through">
+        <label className="group/label ml-3 flex-1 cursor-pointer select-none items-center peer-checked:text-slate-500 peer-checked:line-through">
           <Link href={`/task/${id.toString()}`} className="flex py-3">
             <div className="flex-1">{title}</div>
             <ExpandIcon className="h-5 transition-colors group-hover/label:text-amber-500" />
@@ -51,7 +51,7 @@ export default function TaskListTask({
         <Link href="#" className="px-2">
           <TagIcon className="h-5 transition-colors hover:text-amber-500" />
         </Link>
-        <Link href="#" className="px-2">
+        <Link href={`/task/${id}/delete`} className="px-2">
           <TrashIcon className="h-5 transition-colors hover:text-amber-500" />
         </Link>
       </div>

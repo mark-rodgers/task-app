@@ -1,9 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-  .base-button {
-      @apply rounded-full border-2 border-amber-400 px-12 py-2 font-bold text-amber-700 outline-none transition-colors bg-amber-400 hover:bg-amber-300 hover:border-amber-300 focus:border-amber-300 focus:bg-amber-300;
-  }
-}

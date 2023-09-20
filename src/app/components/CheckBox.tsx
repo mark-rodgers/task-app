@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 type CheckBoxProps = {
   id: string;
   name?: string;
@@ -20,7 +22,10 @@ export default function CheckBox({
         id={id}
         name={name}
         defaultChecked={defaultChecked}
-        className={`h-3 w-3 cursor-pointer appearance-none rounded-full bg-white ring-1 ring-stone-400 ring-offset-4 checked:bg-amber-500 checked:ring-amber-500 hover:ring-amber-500 ${className}`}
+        className={twMerge(
+          "h-3 w-3 cursor-pointer appearance-none rounded-full bg-white ring-1 ring-stone-400 ring-offset-4 checked:bg-amber-500 checked:ring-amber-500 hover:ring-amber-500",
+          className,
+        )}
         onChange={onChange}
       />
     </div>
