@@ -55,7 +55,7 @@ export default async function page({ params }: { params: { id: string } }) {
           >
             Cancel
           </Button>
-          <Button type="submit">Save</Button>
+          <Button type="submit">Update</Button>
         </div>
       </form>
     </>
