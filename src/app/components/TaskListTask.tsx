@@ -27,8 +27,8 @@ export default function TaskListTask({
       <div className="flex w-full items-center px-3 transition-transform group-hover/li:translate-x-1">
         <CheckBox
           id={id.toString()}
-          className="peer"
           defaultChecked={complete}
+          className="peer"
           onChange={(e) => toggleTaskComplete(id, e.target.checked)}
         />
         <label className="group/label ml-3 flex-1 cursor-pointer select-none items-center peer-checked:text-slate-500 peer-checked:line-through">
