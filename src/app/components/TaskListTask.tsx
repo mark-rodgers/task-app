@@ -31,7 +31,7 @@ export default function TaskListTask({
           className="peer"
           onChange={(e) => toggleTaskComplete(id, e.target.checked)}
         />
-        <label className="group/label ml-3 flex-1 cursor-pointer select-none items-center peer-checked:text-slate-500 peer-checked:line-through">
+        <label className="group/label ml-4 flex-1 cursor-pointer select-none items-center peer-checked:text-slate-500 peer-checked:line-through">
           <Link href={`/task/${id.toString()}`} className="flex py-3">
             <div className="flex-1">{title}</div>
             <ExpandIcon className="h-5 transition-colors group-hover/label:text-amber-500" />

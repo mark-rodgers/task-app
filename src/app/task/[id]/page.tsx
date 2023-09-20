@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getTaskById, updateTaskById, deleteTaskById } from "@/api";
 import PageTitle from "@/app/components/PageTitle";
 import TextBox from "@/app/components/TextBox";
+import CheckBox from "@/app/components/CheckBox";
 import Button from "@/app/components/Button";
 
 function validateParams(params: { id: string }): boolean {
@@ -16,6 +17,8 @@ async function handleFormSubmit(data: FormData) {
   if (typeof title !== "string" || title.length === 0)
     throw new Error("Invalid title");
 
+  const complete = data.get("complete");
+
   const id = data.get("id");
   if (id === null || id === undefined) throw new Error("Invalid id");
 
@@ -23,7 +26,7 @@ async function handleFormSubmit(data: FormData) {
   if (taskListId === null || taskListId === undefined)
     throw new Error("Invalid taskListId");
 
-  const task = { title };
+  const task = { title: title, complete: complete === "on" ? true : false };
   await updateTaskById(+id, task);
   redirect(`/tasklist/${taskListId}`);
 }
@@ -41,6 +44,16 @@ export default async function page({ params }: { params: { id: string } }) {
       <PageTitle title="Update Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
         <TextBox name="title" defaultValue={task.title} />
+        <div className="my-3 flex items-center">
+          <CheckBox
+            id="complete"
+            name="complete"
+            defaultChecked={task.complete}
+          />
+          <label htmlFor="complete" className="cursor-pointer pl-4">
+            Completed
+          </label>
+        </div>
         <input type="hidden" name="id" value={task.id} />
         <input type="hidden" name="taskListId" value={task.taskListId} />
         <div className="flex justify-end gap-1">
