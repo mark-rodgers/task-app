@@ -24,7 +24,7 @@ export default function page() {
         <div className="flex justify-end gap-1">
           <Button
             href="/"
-            className="rounded-full px-12 py-2 font-bold text-stone-700 underline-offset-4 outline-none hover:underline focus:underline"
+            className="border-transparent bg-transparent text-black underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
           </Button>

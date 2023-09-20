@@ -41,13 +41,13 @@ export default async function page({ params }: { params: { id: string } }) {
         <div className="flex justify-end gap-1">
           <Button
             href={`/tasklist/${task.taskListId}`}
-            className="base-button border-transparent bg-transparent text-stone-700 underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
+            className="border-transparent bg-transparent text-black underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
           </Button>
           <Button
             type="submit"
-            className="base-button border-red-500 bg-red-500 text-red-800 hover:border-red-400 hover:bg-red-400 focus:border-red-400 focus:bg-red-400"
+            className="border-red-500 bg-red-500 text-red-800 hover:border-red-400 hover:bg-red-400 focus:border-red-400 focus:bg-red-400"
           >
             Delete
           </Button>

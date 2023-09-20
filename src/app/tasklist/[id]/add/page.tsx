@@ -46,7 +46,7 @@ export default async function page({ params }: { params: { id: string } }) {
         <div className="flex justify-end gap-1">
           <Button
             href={`/tasklist/${params.id}`}
-            className="base-button border-transparent bg-transparent text-stone-700 underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
+            className="border-transparent bg-transparent text-black underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
           </Button>
