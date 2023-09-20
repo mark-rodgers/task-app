@@ -5,17 +5,21 @@ import TaskListTask from "@/app/components/TaskListTask";
 import Button from "@/app/components/Button";
 import type { Task } from "@prisma/client";
 
-function validateParams(params: { id: string }): boolean {
-  if (params.id.match(/^[0-9]+$/)) return true;
+function validateParams(params: { taskListId: string }): boolean {
+  if (params.taskListId.match(/^[0-9]+$/)) return true;
   return false;
 }
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function page({
+  params,
+}: {
+  params: { taskListId: string };
+}) {
   if (validateParams(params) === false) {
     return <>Invalid taskListId</>;
   }
 
-  const taskList = await getTaskListById(+params.id, {
+  const taskList = await getTaskListById(+params.taskListId, {
     orderBy: {
       id: "asc",
     },
@@ -36,7 +40,7 @@ export default async function page({ params }: { params: { id: string } }) {
                 height={300}
               />
               <div>No tasks have been added yet.</div>
-              <Button href={`/tasklist/${params.id}/add`}>
+              <Button href={`/tasklist/${params.taskListId}/add`}>
                 Add your first task!
               </Button>
             </div>
@@ -45,7 +49,9 @@ export default async function page({ params }: { params: { id: string } }) {
       ) : (
         <>
           <PageTitle title={taskList.title}>
-            <Button href={`/tasklist/${params.id}/add`}>New Task</Button>
+            <Button href={`/tasklist/${params.taskListId}/add`}>
+              New Task
+            </Button>
           </PageTitle>
           <ul>
             {taskList.tasks.map((task: Task) => (

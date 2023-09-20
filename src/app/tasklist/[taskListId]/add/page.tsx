@@ -4,8 +4,8 @@ import PageTitle from "@/app/components/PageTitle";
 import TextBox from "@/app/components/TextBox";
 import Button from "@/app/components/Button";
 
-function validateParams(params: { id: string }): boolean {
-  if (params.id.match(/^[0-9]+$/)) return true;
+function validateParams(params: { taskListId: string }): boolean {
+  if (params.taskListId.match(/^[0-9]+$/)) return true;
   return false;
 }
 
@@ -29,12 +29,16 @@ async function handleFormSubmit(data: FormData) {
   redirect(`/tasklist/${taskListId}`);
 }
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function page({
+  params,
+}: {
+  params: { taskListId: string };
+}) {
   if (validateParams(params) === false) {
     return <>Invalid taskListId</>;
   }
 
-  const taskList = await getTaskListById(+params.id);
+  const taskList = await getTaskListById(+params.taskListId);
   if (!taskList) return <>Task list not found</>;
 
   return (
@@ -42,10 +46,10 @@ export default async function page({ params }: { params: { id: string } }) {
       <PageTitle title="New Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
         <TextBox name="title" placeholder="New Task" />
-        <input type="hidden" name="taskListId" value={params.id} />
+        <input type="hidden" name="taskListId" value={params.taskListId} />
         <div className="flex justify-end gap-1">
           <Button
-            href={`/tasklist/${params.id}`}
+            href={`/tasklist/${params.taskListId}`}
             className="border-transparent bg-transparent text-black underline-offset-4 hover:border-transparent hover:bg-transparent hover:underline focus:border-transparent focus:bg-transparent focus:underline"
           >
             Cancel
