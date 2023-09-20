@@ -1,3 +1,6 @@
+"use client";
+
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -14,11 +17,12 @@ export default function Button({
   className,
   formAction,
 }: ButtonProps) {
+  const { pending } = useFormStatus();
   if (className === undefined) className = "base-button";
 
   if (!href)
     return (
-      <button formAction={formAction} className={className}>
+      <button formAction={formAction} className={className} disabled={pending}>
         {children}
       </button>
     );
