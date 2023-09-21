@@ -4,7 +4,7 @@ import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
 import type { Session } from "next-auth";
 
 type SessionProviderProps = {
-  session: Session;
+  session: Session | null;
   children: React.ReactNode;
 };
 
