@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth/next";
+import { Analytics } from "@vercel/analytics/react";
 import { authOptions } from "@/auth";
 import SessionProvider from "@/app/_components/SessionProvider";
 
@@ -25,6 +26,7 @@ export default async function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} flex min-h-full`}>
         <SessionProvider session={session}>{children}</SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
