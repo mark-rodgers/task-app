@@ -8,6 +8,15 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      // TODO: store session in postgres. until then we need to force consent
+      // on every login to get a refresh token
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
     // GithubProvider({
     //   clientId: process.env.GITHUB_ID,
