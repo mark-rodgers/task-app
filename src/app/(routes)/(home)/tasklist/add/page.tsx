@@ -15,7 +15,7 @@ async function handleFormSubmit(data: FormData) {
   redirect(`/tasklist/${taskList.id}`);
 }
 
-export default function page() {
+export default function TaskListAdd() {
   return (
     <>
       <PageTitle title="New Task List" />

@@ -1,6 +1,6 @@
 import PageTitle from "@/app/_components/PageTitle";
 
-export default function page() {
+export default function Settings() {
   return (
     <>
       <PageTitle title="Settings" />

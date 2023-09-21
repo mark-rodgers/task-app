@@ -29,7 +29,7 @@ async function handleFormSubmit(data: FormData) {
   redirect(`/tasklist/${taskListId}`);
 }
 
-export default async function page({
+export default async function TaskAdd({
   params,
 }: {
   params: { taskListId: string };

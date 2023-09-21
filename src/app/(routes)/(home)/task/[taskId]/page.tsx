@@ -40,7 +40,11 @@ async function handleFormSubmit(data: FormData) {
   redirect(`/tasklist/${taskListId}`);
 }
 
-export default async function page({ params }: { params: { taskId: string } }) {
+export default async function UpdateTask({
+  params,
+}: {
+  params: { taskId: string };
+}) {
   if (validateParams(params) === false) {
     return <>Invalid taskId</>;
   }

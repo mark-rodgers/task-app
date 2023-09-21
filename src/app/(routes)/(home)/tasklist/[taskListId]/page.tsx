@@ -10,7 +10,7 @@ function validateParams(params: { taskListId: string }): boolean {
   return false;
 }
 
-export default async function page({
+export default async function TaskList({
   params,
 }: {
   params: { taskListId: string };

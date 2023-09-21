@@ -1,4 +1,4 @@
-export default function page() {
+export default function About() {
   return (
     <div className="flex h-full items-center justify-center">
       <div>
