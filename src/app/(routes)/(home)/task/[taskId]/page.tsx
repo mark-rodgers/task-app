@@ -35,7 +35,7 @@ async function handleFormSubmit(data: FormData) {
     complete: complete === "on" ? true : false,
     taskListId: +taskListId,
   };
-  console.log(task);
+
   await updateTaskById(+id, task);
   redirect(`/tasklist/${taskListId}`);
 }

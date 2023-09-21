@@ -3,10 +3,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import Popover from "./Popover";
 
 export default function UserMenu() {
+  const { data: session } = useSession();
+
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const togglePopover = () => {
@@ -63,13 +67,18 @@ export default function UserMenu() {
         className="flex cursor-pointer select-none items-center bg-stone-200 p-2 hover:bg-stone-300"
       >
         <Image
-          src="https://avatars.githubusercontent.com/u/2798202"
+          src={
+            session?.user?.image ||
+            `https://via.placeholder.com/80x80/fbbf24/b45309?text=${
+              session?.user?.name?.charAt(0) || ""
+            }`
+          }
           width={40}
           height={40}
-          alt="User Profile Image"
+          alt={session?.user?.name || "Default user image"}
           className="mr-3 rounded-full"
         />
-        <div>Mark Rodgers</div>
+        <div>{session?.user?.name}</div>
         <div
           className={`ml-auto flex h-8 w-8 cursor-pointer items-center justify-center gap-1 rounded-full transition-transform${
             isPopoverOpen ? " rotate-90" : ""

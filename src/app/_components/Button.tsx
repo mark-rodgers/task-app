@@ -9,6 +9,7 @@ type ButtonProps = {
   type?: string;
   href?: string;
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   formAction?: (data: FormData) => void;
 };
 
@@ -16,6 +17,7 @@ export default function Button({
   children,
   href,
   className,
+  onClick,
   formAction,
 }: ButtonProps) {
   const { pending } = useFormStatus();
@@ -27,7 +29,12 @@ export default function Button({
 
   if (!href)
     return (
-      <button className={classes} formAction={formAction} disabled={pending}>
+      <button
+        className={classes}
+        onClick={onClick}
+        formAction={formAction}
+        disabled={pending}
+      >
         {children}
       </button>
     );

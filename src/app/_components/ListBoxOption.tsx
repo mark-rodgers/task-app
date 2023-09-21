@@ -21,7 +21,9 @@ export default function ListBoxOption({
       <button
         type="button"
         className="w-full text-left"
-        onClick={(e: React.MouseEvent) => context?.setSelected({ id, value })}
+        onClick={(e: React.MouseEvent<HTMLElement>) =>
+          context?.setSelected({ id, value })
+        }
       >
         {children}
       </button>

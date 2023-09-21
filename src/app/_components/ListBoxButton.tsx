@@ -10,7 +10,9 @@ export default function ListBoxButton() {
     <button
       type="button"
       className="rounded-full border border-red-500 px-4 py-2"
-      onClick={(e: React.MouseEvent) => context?.setIsOpen(!context.isOpen)}
+      onClick={(e: React.MouseEvent<HTMLElement>) =>
+        context?.setIsOpen(!context.isOpen)
+      }
     >
       {context?.selected?.value ? context.selected.value : "- Select -"}
     </button>
