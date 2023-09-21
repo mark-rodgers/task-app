@@ -20,28 +20,20 @@ export default function Button({
 }: ButtonProps) {
   const { pending } = useFormStatus();
 
+  const classes = twMerge(
+    "rounded-full border-2 border-amber-400 bg-amber-400 px-12 py-2 font-bold text-amber-700 outline-none transition-colors hover:border-amber-300 hover:bg-amber-300 focus:border-amber-300 focus:bg-amber-300",
+    className,
+  );
+
   if (!href)
     return (
-      <button
-        className={twMerge(
-          "rounded-full border-2 border-amber-400 bg-amber-400 px-12 py-2 font-bold text-amber-700 outline-none transition-colors hover:border-amber-300 hover:bg-amber-300 focus:border-amber-300 focus:bg-amber-300",
-          className,
-        )}
-        formAction={formAction}
-        disabled={pending}
-      >
+      <button className={classes} formAction={formAction} disabled={pending}>
         {children}
       </button>
     );
   else
     return (
-      <Link
-        href={href}
-        className={twMerge(
-          "rounded-full border-2 border-amber-400 bg-amber-400 px-12 py-2 font-bold text-amber-700 outline-none transition-colors hover:border-amber-300 hover:bg-amber-300 focus:border-amber-300 focus:bg-amber-300",
-          className,
-        )}
-      >
+      <Link href={href} className={classes}>
         {children}
       </Link>
     );

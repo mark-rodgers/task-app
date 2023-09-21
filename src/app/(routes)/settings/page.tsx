@@ -5,6 +5,9 @@ export default function page() {
     <>
       <PageTitle title="Settings" />
       <main>TODO: Settings</main>
+      <div>Account</div>
+      <div>Theme</div>
+      <div>etc</div>
     </>
   );
 }
