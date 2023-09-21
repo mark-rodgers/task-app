@@ -3,6 +3,6 @@
 import { signOut } from "next-auth/react";
 
 export default function Logout() {
-  signOut({ callbackUrl: "/about" });
+  signOut({ callbackUrl: "/" });
   return <div>Signing out...</div>;
 }

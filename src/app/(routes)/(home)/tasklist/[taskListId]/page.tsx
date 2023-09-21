@@ -32,14 +32,14 @@ export default async function TaskList({
         <>
           <PageTitle title={taskList.title} />
           <div className="flex h-full items-center justify-center text-center">
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center">
               <Image
                 src="/not-found.jpg"
                 alt="Empty"
                 width={300}
                 height={300}
               />
-              <div>No tasks have been added yet.</div>
+              <div className="my-8">No tasks have been added yet.</div>
               <Button href={`/tasklist/${params.taskListId}/add`}>
                 Add your first task!
               </Button>
