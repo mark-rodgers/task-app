@@ -28,9 +28,11 @@ export default function Login() {
         <div className="backgroundOverlay absolute flex h-full w-full justify-normal bg-amber-400/50 backdrop-brightness-50 md:justify-center">
           <div className="leftSide m-16 hidden w-fit grow lg:block">
             <div className="flex flex-col pt-16 font-bold lg:text-[5vw] xl:text-[8vw] ">
-              <div className="leading-none text-amber-200">Welcome</div>
-              <div className="text-shadow-xl leading-none text-amber-200">
-                Back
+              <div className="animate-fade-in-left leading-none text-amber-200">
+                Welcome
+              </div>
+              <div className="animate-fade-in-up leading-none text-amber-200">
+                Back.
               </div>
             </div>
           </div>
