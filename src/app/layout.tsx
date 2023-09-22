@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import { authOptions } from "@/auth";
 import SessionProvider from "@/app/_components/SessionProvider";
+import DebugBreakpoints from "@/app/_components/DebugBreakpoints";
 
 import type { Metadata } from "next";
 import type { Session } from "next-auth";
@@ -26,6 +27,7 @@ export default async function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} flex min-h-full`}>
         <SessionProvider session={session}>{children}</SessionProvider>
+        <DebugBreakpoints enabled={true} />
         <Analytics />
       </body>
     </html>
