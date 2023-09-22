@@ -45,7 +45,7 @@ export default async function TaskAdd({
     <>
       <PageTitle title="New Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
-        <TextBox name="title" placeholder="New Task" />
+        <TextBox id="title" name="title" placeholder="New Task" />
         <input type="hidden" name="taskListId" value={params.taskListId} />
         <div className="flex justify-end gap-1">
           <Button

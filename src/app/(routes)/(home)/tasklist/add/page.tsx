@@ -20,7 +20,7 @@ export default function TaskListAdd() {
     <>
       <PageTitle title="New Task List" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
-        <TextBox name="title" placeholder="New Task List" />
+        <TextBox id="title" name="title" placeholder="New Task List" />
         <div className="flex justify-end gap-1">
           <Button
             href="/"
