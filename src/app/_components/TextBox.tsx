@@ -1,21 +1,26 @@
 import { twMerge } from "tailwind-merge";
 
 type TextBoxProps = {
+  id: string;
   name: string;
+  type?: string;
   placeholder?: string;
   defaultValue?: string;
   className?: string;
 };
 
 export default function TextBox({
+  id,
   name,
+  type,
   placeholder,
   defaultValue,
   className,
 }: TextBoxProps) {
   return (
     <input
-      type="text"
+      type={type ? type : "text"}
+      id={id}
       name={name}
       placeholder={placeholder}
       defaultValue={defaultValue}
