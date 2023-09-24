@@ -40,7 +40,11 @@ export default function DebugBreakpoints({ enabled }: DebugBreakpointsProps) {
     enabled && (
       <div className="fixed bottom-0 mx-auto flex w-full justify-center">
         <div className="bg-black px-4 font-bold text-white">
-          {currentBreakpoint} : {windowWidth}px
+          {currentBreakpoint && (
+            <span>
+              {currentBreakpoint} : {windowWidth}px
+            </span>
+          )}
         </div>
       </div>
     )
