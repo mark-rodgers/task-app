@@ -1,8 +1,20 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/auth";
 import TaskListNav from "@/app/_components/TaskListNav";
 import UserMenu from "@/app/_components/UserMenu";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+import type { Session } from "next-auth";
+
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session: Session | null = await getServerSession(authOptions);
+  if (!session) redirect("/auth/login");
+
   return (
     <>
       <header className="flex w-full max-w-xs flex-col justify-between bg-stone-100">
