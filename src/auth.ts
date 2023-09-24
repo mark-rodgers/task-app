@@ -1,23 +1,16 @@
-import GoogleProvider from "next-auth/providers/google";
+import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/db";
 
 import type { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      // TODO: store session in postgres. until then we need to force consent
-      // on every login to get a refresh token
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -31,5 +24,4 @@ export const authOptions: AuthOptions = {
     //   verifyRequest: '/auth/verify-request', // (used for check email message)
     //   newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
-  // adapter: PrismaAdapter(prisma),
 };
