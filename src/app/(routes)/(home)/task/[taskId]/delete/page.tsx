@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getTaskById, updateTaskById, deleteTaskById } from "@/api";
+import { getTaskById, deleteTaskById } from "@/api";
 import PageTitle from "@/app/_components/PageTitle";
 import Button from "@/app/_components/Button";
 

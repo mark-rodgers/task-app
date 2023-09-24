@@ -49,7 +49,7 @@ export default async function UpdateTask({
     return <>Invalid taskId</>;
   }
 
-  const task = await getTaskById(+params.taskId, true);
+  const task = await getTaskById(+params.taskId);
   if (!task) return <>Task not found</>;
 
   const taskLists = await getTaskLists();

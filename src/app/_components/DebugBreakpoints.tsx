@@ -28,9 +28,10 @@ export default function DebugBreakpoints({ enabled }: DebugBreakpointsProps) {
 
   useEffect(() => {
     if (!enabled) return;
-    onWindowResize();
 
+    onWindowResize();
     window.addEventListener("resize", onWindowResize);
+
     return () => {
       window.removeEventListener("resize", onWindowResize);
     };
