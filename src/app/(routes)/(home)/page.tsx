@@ -1,15 +1,15 @@
 "use client";
 
+import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import PageTitle from "@/app/_components/PageTitle";
 import Loading from "@/app/_components/Loading";
-import AccessDenied from "@/app/_components/AccessDenied";
 
 export default function Home() {
   const { data: session, status } = useSession();
 
   if (status === "loading") return <Loading />;
-  else if (status === "unauthenticated") return <AccessDenied />;
+  else if (status === "unauthenticated") redirect("/auth/login");
 
   return (
     <>
