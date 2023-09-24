@@ -48,11 +48,12 @@ export default function Login() {
         <div className="backgroundOverlay flex h-full w-full justify-normal overflow-scroll bg-amber-400/50 backdrop-brightness-50 md:justify-center">
           <div className="leftSide m-16 hidden w-fit grow lg:block">
             <div className="flex flex-col pt-16 font-bold lg:text-[5vw] xl:text-[8vw] ">
-              <div className="animate-fade-in-left leading-none text-amber-200">
+              <div className="animate-fade-in-right leading-none text-amber-200">
                 Welcome
               </div>
-              <div className="animate-fade-in-up leading-none text-amber-200">
-                Back.
+              <div className="animate-[fadeInUpDelay_2s_ease-in-out] leading-none text-amber-200">
+                Back
+                <span className="animate-[fadeInDelay_4s_ease-in-out]">.</span>
               </div>
             </div>
           </div>
@@ -69,7 +70,7 @@ export default function Login() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="flex h-screen flex-col overflow-scroll bg-white px-8 py-16 sm:h-fit sm:rounded-3xl sm:p-16">
+                  <div className="flex h-screen flex-col overflow-scroll bg-white px-8 py-16 sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
                     <div className="mb-8 text-4xl font-bold">Sign In</div>
                     <form className="flex flex-col gap-3">
                       <label htmlFor="email" className="font-bold">
@@ -168,7 +169,7 @@ export default function Login() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="flex h-screen flex-col overflow-scroll  bg-stone-900 p-8 pt-20 text-white sm:h-fit sm:rounded-3xl sm:p-16">
+                  <div className="flex h-screen flex-col overflow-scroll bg-stone-900  p-8 pt-20 text-white sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
                     <div className="absolute left-6 top-6 sm:left-5 sm:top-4">
                       <button
                         onClick={toggleCurrentForm}
