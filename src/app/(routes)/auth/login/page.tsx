@@ -45,7 +45,7 @@ export default function Login() {
   return (
     <div className="w-full">
       <div className="backgroundImage h-full bg-[url('/bg-login-page.webp')] bg-cover bg-center">
-        <div className="backgroundOverlay flex h-full w-full justify-normal overflow-scroll bg-amber-400/50 backdrop-brightness-50 md:justify-center">
+        <div className="backgroundOverlay flex h-full w-full justify-normal overflow-auto bg-amber-400/50 backdrop-brightness-50 md:justify-center">
           <div className="leftSide m-16 hidden w-fit grow lg:block">
             <div className="flex flex-col pt-16 font-bold lg:text-[5vw] xl:text-[8vw] ">
               <div className="animate-fade-in-right leading-none text-amber-200">
@@ -70,7 +70,7 @@ export default function Login() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="flex h-screen flex-col overflow-scroll bg-white px-8 py-16 sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
+                  <div className="flex h-screen flex-col overflow-hidden bg-white px-8 py-16 sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
                     <div className="mb-8 text-4xl font-bold">Sign In</div>
                     <form className="flex flex-col gap-3">
                       <label htmlFor="email" className="font-bold">
