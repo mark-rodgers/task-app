@@ -9,7 +9,7 @@ export default function ListBoxButton() {
   return (
     <button
       type="button"
-      className="rounded-full border border-red-500 px-4 py-2"
+      className={"rounded-full border-2 px-4 py-2 transition-colors " + (context?.isOpen ? "border-amber-300" : "border-stone-300")}
       onClick={(e: React.MouseEvent<HTMLElement>) =>
         context?.setIsOpen(!context.isOpen)
       }

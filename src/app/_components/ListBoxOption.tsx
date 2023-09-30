@@ -17,7 +17,7 @@ export default function ListBoxOption({
   const context = useContext(ListBoxContext);
 
   return (
-    <div className="bg-red-200 hover:bg-red-500">
+    <div className={"block px-4 py-2 text-sm text-gray-700 " + (context?.selected?.id === id ? "bg-gray-100" : "hover:bg-gray-100")}>
       <button
         type="button"
         className="w-full text-left"

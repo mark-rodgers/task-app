@@ -56,7 +56,7 @@ export default function ListBox({
     <ListBoxContext.Provider
       value={{ selected, setSelected, isOpen, setIsOpen }}
     >
-      <div>
+      <div className={className}>
         {children}
         <input type="hidden" name={name} value={selected.id} />
       </div>

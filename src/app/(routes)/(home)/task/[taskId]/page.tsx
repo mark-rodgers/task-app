@@ -58,11 +58,14 @@ export default async function UpdateTask({
     <>
       <PageTitle title="Update Task" />
       <form action={handleFormSubmit} className="flex flex-col gap-2">
+        <label htmlFor="title" className="font-bold">Task Name</label>
         <TextBox id="title" name="title" defaultValue={task.title} />
+        <label className="block font-bold">Task List</label>
         <ListBox
           name="taskListId"
           defaultId={task.taskListId}
           defaultValue={task.taskList.title}
+          className="relative"
         >
           <ListBoxButton />
           <ListBoxOptions>
