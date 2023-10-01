@@ -80,6 +80,7 @@ export default function Login() {
                         id="email"
                         name="email"
                         placeholder="jonsnow@thewall.com"
+                        autoComplete="username"
                         className="border p-4 font-normal"
                       />
                       <label htmlFor="password" className="font-bold">
@@ -89,6 +90,7 @@ export default function Login() {
                         type="password"
                         id="password"
                         name="password"
+                        autoComplete="current-password"
                         className="border p-4 font-normal"
                       />
                       <Button

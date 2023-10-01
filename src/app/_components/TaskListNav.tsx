@@ -2,6 +2,8 @@ import { getTaskLists } from "@/api";
 import TaskListNavLink from "@/app/_components/TaskListNavLink";
 import Button from "@/app/_components/Button";
 
+import type { TaskList } from "@prisma/client";
+
 export default async function TaskListNav() {
   const taskLists = await getTaskLists();
   return (
@@ -12,7 +14,7 @@ export default async function TaskListNav() {
           <>No task lists exist yet.</>
         ) : (
           <>
-            {taskLists.map((taskList) => (
+            {taskLists.map((taskList: TaskList) => (
               <TaskListNavLink
                 key={taskList.id}
                 id={taskList.id}
