@@ -27,8 +27,11 @@ export default async function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} flex min-h-full`}>
         <SessionProvider session={session}>{children}</SessionProvider>
-        <DebugBreakpoints enabled={process.env.NODE_ENV !== "production"} />
-        <Analytics />
+        {process.env.NODE_ENV === "production" ? (
+          <Analytics />
+        ) : (
+          <DebugBreakpoints enabled={true} />
+        )}
       </body>
     </html>
   );
