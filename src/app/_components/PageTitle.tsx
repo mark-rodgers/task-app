@@ -1,3 +1,5 @@
+"use client";
+
 type PageTitleProps = {
   title: string;
   children?: React.ReactNode;

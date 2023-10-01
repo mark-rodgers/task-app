@@ -1,3 +1,5 @@
+"use client";
+
 export default function Loading() {
   return (
     <div role="status" className="flex h-full items-center justify-center">
