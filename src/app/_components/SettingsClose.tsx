@@ -24,7 +24,7 @@ export default function SettingsClose() {
   return (
     <Link
       href="/"
-      className="flex flex-col items-center text-stone-700 transition-colors hover:text-stone-500"
+      className="flex flex-col items-center text-stone-700 transition-colors hover:text-stone-500 focus:text-stone-500"
     >
       <CloseIcon className="h-12" />
       <span className="text-sm font-bold">ESC</span>

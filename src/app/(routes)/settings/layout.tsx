@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/auth";
@@ -25,31 +26,37 @@ export default async function Layout({
           <NavLink
             href="/settings/account"
             activeClassName="bg-stone-100"
-            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100"
+            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100 focus:bg-stone-100"
           >
             My Account
           </NavLink>
           <NavLink
             href="/settings/appearance"
             activeClassName="bg-stone-100"
-            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100"
+            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100 focus:bg-stone-100"
           >
             Appearance
           </NavLink>
           <NavLink
             href="/settings/billing"
             activeClassName="bg-stone-100"
-            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100"
+            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100 focus:bg-stone-100"
           >
             Billing
           </NavLink>
           <NavLink
             href="/settings/import"
             activeClassName="bg-stone-100"
-            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100"
+            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-stone-100 focus:bg-stone-100"
           >
             Import
           </NavLink>
+          <Link
+            href="/auth/logout"
+            className="mb-2 rounded-xl p-3 pr-24 font-bold text-stone-700 outline-none transition-colors hover:bg-red-500 hover:text-white focus:bg-red-500 focus:text-white"
+          >
+            Logout
+          </Link>
         </div>
         <div className="w-full px-4">{children}</div>
       </div>

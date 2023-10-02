@@ -31,7 +31,7 @@ export default function AccountSettings() {
             alt={session?.user?.name || "Default user image"}
             className="rounded-full"
           />
-          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100">
+          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100">
             <UploadIcon className="h-10 w-10" />
           </div>
         </button>
@@ -47,8 +47,8 @@ export default function AccountSettings() {
             className="w-full"
           />
           <span className="absolute bottom-10 left-1/2 z-10 m-4 mx-auto -translate-x-1/2 rounded-md bg-gray-800 px-4 py-2 text-sm text-gray-100 opacity-0 transition-opacity group-hover:opacity-100">
-            Display Name cannot be changed when signed in with Google,
-            Microsoft, or GitHub.
+            Display Name cannot be changed when signed in with a third-party
+            provider.
           </span>
         </div>
       </div>
@@ -63,13 +63,27 @@ export default function AccountSettings() {
             className="w-full"
           />
           <span className="absolute bottom-10 left-1/2 z-10 m-4 mx-auto -translate-x-1/2 rounded-md bg-gray-800 px-4 py-2 text-sm text-gray-100 opacity-0 transition-opacity group-hover:opacity-100">
-            Email cannot be changed when signed in with Google, Microsoft, or
-            GitHub.
+            Email cannot be changed when signed in with a third-party provider.
           </span>
         </div>
       </div>
       <div className="flex justify-end">
         <Button>Save</Button>
+      </div>
+      <div className="mt-4 flex flex-col border-t border-stone-200 pt-4">
+        <div className="font-bold">Account Deletion</div>
+        <div className="pb-4">
+          Deleting your account is irreversible. All your tasks and user data
+          will be permanently deleted.
+        </div>
+        <div>
+          <button
+            onClick={() => alert("TODO: allow user to delete account")}
+            className="text-red-500 hover:underline focus:underline"
+          >
+            Delete Account
+          </button>
+        </div>
       </div>
     </div>
   );
