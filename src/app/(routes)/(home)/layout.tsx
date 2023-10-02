@@ -16,7 +16,7 @@ export default async function Layout({
   if (!session) redirect("/auth/login");
 
   return (
-    <>
+    <main className="flex min-h-full">
       <header className="flex w-full max-w-xs flex-col justify-between bg-stone-100">
         <div>
           <div className="mx-4 mt-4 font-bold text-stone-500">
@@ -29,6 +29,6 @@ export default async function Layout({
       <main className="flex-1">
         <div className="container mx-auto h-full p-4">{children}</div>
       </main>
-    </>
+    </main>
   );
 }

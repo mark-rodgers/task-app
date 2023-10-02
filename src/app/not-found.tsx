@@ -7,7 +7,7 @@ const tomorrow = Tomorrow({ weight: ["400"], subsets: ["latin"] });
 export default function NotFound() {
   return (
     <div
-      className={`${tomorrow.className} flex w-full flex-col items-center justify-center bg-[#040205] p-4`}
+      className={`${tomorrow.className} flex w-full h-full flex-col items-center justify-center bg-[#040205] p-4`}
     >
       <Image src="/404.gif" alt="Page not found" width={350} height={350} />
       <Button

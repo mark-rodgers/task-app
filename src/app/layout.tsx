@@ -25,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} flex min-h-full`}>
+      <body className={`${inter.className} h-full`}>
         <SessionProvider session={session}>{children}</SessionProvider>
         {process.env.NODE_ENV === "production" ? (
           <Analytics />

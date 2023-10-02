@@ -43,7 +43,7 @@ export default function Login() {
   const [currentForm, setCurrentForm] = useState("login");
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <div className="backgroundImage h-full bg-[url('/bg-login-page.webp')] bg-cover bg-center">
         <div className="backgroundOverlay flex h-full w-full justify-normal overflow-auto bg-amber-400/50 backdrop-brightness-50 md:justify-center">
           <div className="leftSide m-16 hidden w-fit grow lg:block">
