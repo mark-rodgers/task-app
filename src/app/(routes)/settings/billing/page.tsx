@@ -1,5 +1,3 @@
-export default async function Billing() {
-  return (
-    <div>billing</div>
-  );
+export default function Billing() {
+  return <div>TODO: Billing</div>;
 }

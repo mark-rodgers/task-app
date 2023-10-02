@@ -1,5 +1,3 @@
-export default async function Import() {
-  return (
-    <div>import</div>
-  );
+export default function Import() {
+  return <div>TODO: Import</div>;
 }
