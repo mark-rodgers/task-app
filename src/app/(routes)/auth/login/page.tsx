@@ -171,7 +171,7 @@ export default function Login() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="flex h-screen flex-col overflow-scroll bg-stone-900  p-8 pt-20 text-white sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
+                  <div className="flex h-screen flex-col overflow-hidden bg-stone-900  p-8 pt-20 text-white sm:h-fit sm:animate-fade-in-left sm:rounded-3xl sm:p-16">
                     <div className="absolute left-6 top-6 sm:left-5 sm:top-4">
                       <button
                         onClick={toggleCurrentForm}
